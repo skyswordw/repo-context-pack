@@ -1,0 +1,47 @@
+{
+  "name": "@skyswordw/repo-context-pack",
+  "version": "0.1.0",
+  "description": "Generate a compact, safe context pack for coding agents entering an unfamiliar repository.",
+  "type": "module",
+  "bin": {
+    "repo-context-pack": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "prepare": "npm run build",
+    "start": "node dist/cli.js",
+    "demo": "node dist/cli.js --repo fixtures/example-repo --out tmp/demo-context --force",
+    "test": "node --test dist/**/*.test.js"
+  },
+  "keywords": [
+    "agents",
+    "codex",
+    "context",
+    "mcp",
+    "cli",
+    "vibe-coding"
+  ],
+  "author": "skywalker",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skyswordw/repo-context-pack.git"
+  },
+  "bugs": {
+    "url": "https://github.com/skyswordw/repo-context-pack/issues"
+  },
+  "homepage": "https://github.com/skyswordw/repo-context-pack#readme",
+  "devDependencies": {
+    "@types/node": "^24.12.3",
+    "typescript": "~6.0.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
