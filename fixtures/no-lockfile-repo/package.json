@@ -1,0 +1,7 @@
+{
+  "name": "no-lockfile-repo",
+  "private": true,
+  "scripts": {
+    "test": "node --test"
+  }
+}

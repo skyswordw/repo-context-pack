@@ -207,7 +207,10 @@ function inferRisks(scan: ScanResult, scripts: ScriptCommand[]): RiskSignal[] {
 
   const envFiles = scan.files
     .map((file) => file.path)
-    .filter((file) => /^\.env($|\.)/.test(file) && !file.endsWith(".example") && !file.endsWith(".sample"));
+    .filter((file) => {
+      const basename = path.posix.basename(file);
+      return /^\.env($|\.)/.test(basename) && !basename.endsWith(".example") && !basename.endsWith(".sample");
+    });
 
   for (const envFile of envFiles) {
     risks.push({

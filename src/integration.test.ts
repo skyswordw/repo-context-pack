@@ -19,3 +19,23 @@ test("scan and generate a context pack for the fixture repository", async () => 
     ["AGENTS.md", "agent-brief.md", "commands.md", "repo-map.md", "risk-report.md"]
   );
 });
+
+test("flags nested env files by path without reading their contents", async () => {
+  const scan = await scanRepository("fixtures/nested-env-repo", 1000);
+  const insight = await analyzeRepository(scan);
+
+  assert.ok(
+    insight.risks.some(
+      (risk) => risk.title === "Potential local secret file" && risk.evidence === "apps/web/.env"
+    )
+  );
+  assert.ok(!JSON.stringify(insight).includes("SECRET_TOKEN"));
+});
+
+test("does not assume npm when package.json has no lockfile", async () => {
+  const scan = await scanRepository("fixtures/no-lockfile-repo", 1000);
+  const insight = await analyzeRepository(scan);
+
+  assert.equal(insight.packageManager, "unknown");
+  assert.ok(insight.risks.some((risk) => risk.title === "Package manager could not be inferred"));
+});

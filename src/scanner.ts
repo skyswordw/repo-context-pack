@@ -184,7 +184,6 @@ function detectPackageManager(filePaths: string[]): PackageManager {
   if (files.has("yarn.lock")) return "yarn";
   if (files.has("bun.lockb") || files.has("bun.lock")) return "bun";
   if (files.has("package-lock.json")) return "npm";
-  if (files.has("package.json")) return "npm";
   return "unknown";
 }
 

@@ -7,17 +7,19 @@
     "repo-context-pack": "./dist/cli.js"
   },
   "files": [
-    "dist",
+    "dist/*.js",
+    "dist/*.d.ts",
     "README.md",
     "LICENSE"
   ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "check": "tsc -p tsconfig.json --noEmit",
+    "build:test": "tsc -p tsconfig.test.json",
+    "check": "tsc -p tsconfig.test.json --noEmit",
     "prepare": "npm run build",
     "start": "node dist/cli.js",
     "demo": "node dist/cli.js --repo fixtures/example-repo --out tmp/demo-context --force",
-    "test": "node --test dist/**/*.test.js"
+    "test": "npm run build:test && node --test dist-test/**/*.test.js"
   },
   "keywords": [
     "agents",

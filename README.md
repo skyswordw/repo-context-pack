@@ -20,6 +20,8 @@ Vibe coding gets fast once an agent has the right context. It gets expensive whe
 npx github:skyswordw/repo-context-pack --repo /path/to/repo --out ./agent-context
 ```
 
+The current public install path is GitHub. The package name is reserved for a future npm registry release.
+
 Local development:
 
 ```bash
